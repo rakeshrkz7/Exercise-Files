@@ -55,7 +55,8 @@ describe('validate using async await', () => {
       email: 'username@example.com',
     });
 
-    await expect(reservations.validate(reservation)).resolves.toEqual(reservation);
+    await expect(reservations.validate(reservation))
+      .resolves.toEqual(reservation);
   });
 
   it('should reject with an invalid email', async () => {
@@ -67,19 +68,8 @@ describe('validate using async await', () => {
       email: 'username',
     });
 
-    await expect(reservations.validate(reservation)).rejects.toBeInstanceOf(Error);
-  });
-
-  it('should reject with an invalid email', async () => {
-    const reservation = new Reservation({
-      date: '2017/06/10',
-      time: '06:02 AM',
-      party: 4,
-      name: 'Family',
-      email: 'username',
-    });
-
-    await expect(reservations.validate(reservation)).rejects.toBeInstanceOf(Error);
+    await expect(reservations.validate(reservation))
+      .rejects.toBeInstanceOf(Error);
   });
 });
 
